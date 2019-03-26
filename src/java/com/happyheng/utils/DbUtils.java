@@ -28,7 +28,7 @@ public class DbUtils {
     public Connection getNewConnection() {
 
         try {
-            Class.forName("com.mysql.jdbc.Driver");
+            Class.forName("com.mysql.cj.jdbc.Driver");
             return DriverManager.getConnection(dbUrl, dbUser, dbPassWord);
         } catch (Exception e) {
             e.printStackTrace();
