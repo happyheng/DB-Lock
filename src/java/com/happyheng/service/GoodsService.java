@@ -48,6 +48,8 @@ public class GoodsService{
             buySuccess = goodsDao.saveGoodsByOptimisticLock(goods);
             if (buySuccess) {
                 break;
+            } else {
+                System.out.println("乐观锁更新失败");
             }
         }
 

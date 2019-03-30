@@ -38,11 +38,18 @@ public class GoodsDao {
                 goods.setCount(resultSet.getInt("count"));
                 goods.setVersion(resultSet.getLong("version"));
 
+
                 return goods;
             }
 
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
 
         return null;
@@ -69,6 +76,12 @@ public class GoodsDao {
 
         } catch (SQLException e) {
             e.printStackTrace();
+        } finally {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
 
 
