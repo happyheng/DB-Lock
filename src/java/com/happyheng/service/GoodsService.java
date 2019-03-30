@@ -63,4 +63,25 @@ public class GoodsService{
 
     }
 
+
+    /**
+     * 使用悲观锁购买商品
+     * @param userId   userId
+     * @param goodsId  商品id
+     * @return         orderId
+     */
+    public int bugGoodsUsePessimisticLock(int userId, int goodsId) {
+
+        // 使用悲观锁进行购买
+        boolean bugSuccess = goodsDao.decrementGoodsUsePessimisticLock(goodsId);
+
+        if (!bugSuccess) {
+            System.out.println("购买失败");
+           return 0;
+        }
+
+        // 插入order
+        return orderDao.addOrder(userId, goodsId);
+    }
+
 }
